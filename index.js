@@ -100,7 +100,7 @@ client.on('message', (message) => {
       {name: '!관리자', desc: '관리자 소개'},
       {name: '!공지', desc: 'dm으로  공지 보내기'},
       {name: '!공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
-      {name: '!채팅삭제', desc: '채팅삭제 하기'},
+      {name: '!채팅삭제', desc: '채팅삭제!공지 하기'},
       {name: '!초대코드', desc: '해당 채널의 초대 코드 표기'},
     ];
     let commandStr = '';
@@ -147,12 +147,12 @@ client.on('message', (message) => {
     if(message.member != null) { // 채널에서 공지 쓸 때
       let contents = message.content.slice('!공지2'.length);
       let embed = new Discord.RichEmbed()
-        .setAuthor('공지 of Cozy World')
+        .setAuthor('Cozy World 공지')
         .setColor('#186de6')
         .setFooter(`Cozy World ❤️`)
         .setTimestamp()
   
-      embed.addField('공지: ', contents);
+      embed.addField('내용: ', contents);
   
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;

@@ -3,8 +3,8 @@ const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : '';
 const welcomeChannelName = "안녕하세요";
 const byeChannelName = "안녕히가세요";
-const welcomeChannelComment = "어서오세요.";
-const byeChannelComment = "안녕히가세요.";
+const welcomeChannelComment = "어서오세요. 코지월드에 오신걸 환영합니다.";
+const byeChannelComment = "잘가시게~";
 
 client.on('ready', () => {
   console.log('켰다.');
@@ -17,7 +17,7 @@ client.on("guildMemberAdd", (member) => {
 
   welcomeChannel.send(`<@${newUser.id}> ${welcomeChannelComment}\n`);
 
-  member.addRole(guild.roles.find(role => role.name == "게스트"));
+  member.addRole(guild.roles.find(role => role.name == "불법체류자"));
 });
 
 client.on("guildMemberRemove", (member) => {
@@ -31,8 +31,14 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if(message.author.bot) return;
 
-  if(message.content == 'ping') {
-    return message.reply('pong');
+  if(message.content == '!출근') {
+    return message.reply('출근하셨습니다.');
+  }
+
+  if(message.author.bot) return;
+
+  if(message.content == '!퇴근') {
+    return message.reply('퇴근하셨습니다. 수고하셨습니다.');
   }
 
   if(message.content == 'embed') {
@@ -40,7 +46,7 @@ client.on('message', (message) => {
     let embed = new Discord.RichEmbed()
       .setTitle('타이틀')
       .setURL('http://www.naver.com')
-      .setAuthor('나긋해', img, 'http://www.naver.com')
+      .setAuthor('테레사', img, 'http://www.naver.com')
       .setThumbnail(img)
       .addBlankField()
       .addField('Inline field title', 'Some value here')
@@ -50,7 +56,7 @@ client.on('message', (message) => {
       .addField('Inline field title', 'Some value here1\nSome value here2\nSome value here3\n')
       .addBlankField()
       .setTimestamp()
-      .setFooter('나긋해가 만듬', img)
+      .setFooter('made by 테레사', img)
 
     message.channel.send(embed)
   } else if(message.content == 'embed2') {
@@ -63,9 +69,9 @@ client.on('message', (message) => {
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
-      .setAuthor('Help of 콜라곰 BOT', helpImg)
+      .setAuthor('Help of Cozy World', helpImg)
       .setColor('#186de6')
-      .setFooter(`콜라곰 BOT ❤️`)
+      .setFooter(`Cozy World ❤️`)
       .setTimestamp()
     
     commandList.forEach(x => {
@@ -92,10 +98,10 @@ client.on('message', (message) => {
     }
   }
 
-  if(message.content.startsWith('!청소')) {
+  if(message.content.startsWith('~청소')) {
     if(checkPermission(message)) return
 
-    var clearLine = message.content.slice('!청소 '.length);
+    var clearLine = message.content.slice('~청소 '.length);
     var isNum = !isNaN(clearLine)
 
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {

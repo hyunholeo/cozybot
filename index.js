@@ -53,7 +53,7 @@ client.on('message', (message) => {
     embed.setFooter(`Cozy World ❤️`)
     embed.addBlankField()
     embed.addField('RAM',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
-    embed.addField('up time', `${duration}`, true);
+    embed.addField('Up time', `${duration}`, true);
     embed.addField('유저',         `${client.users.size.toLocaleString()}`, true);
     embed.addField('서버',       `${client.guilds.size.toLocaleString()}`, true);
     // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
@@ -92,14 +92,14 @@ client.on('message', (message) => {
       .setFooter('made by 𝑻𝒆𝒓𝒆𝒔𝒂', img)
 
     message.channel.send(embed)
-  } else if(message.content == '!help') {
+  } else if(message.content == '!도움말') {
     let helpImg = 'https://cdn.discordapp.com/avatars/368442891615338496/1ec9a9cbafb3f1098dcf4af610ffe410.png?size=1024';
     let commandList = [
-      {name: '!help', desc: 'help'},
-      {name: 'ping', desc: '현재 핑 상태'},
-      {name: 'embed', desc: 'embed 예제1'},
-      {name: '!전체공지', desc: 'dm으로 전체 공지 보내기'},
-      {name: '!전체공지2', desc: 'dm으로 전체 embed 형식으로 공지 보내기'},
+      {name: '!도움말', desc: '도움말'},
+      {name: '!디스코드', desc: '현재 디스코드 상태'},
+      {name: '!관리자', desc: '관리자 소개'},
+      {name: '!공지', desc: 'dm으로  공지 보내기'},
+      {name: '!공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
       {name: '!청소', desc: '텍스트 지움'},
       {name: '!초대코드', desc: '해당 채널의 초대 코드 표기'},
       {name: '!초대코드2', desc: '봇이 들어가있는 모든 채널의 초대 코드 표기'},
@@ -143,10 +143,10 @@ client.on('message', (message) => {
           message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
         }
       })
-  } else if(message.content.startsWith('!전체공지2')) {
+  } else if(message.content.startsWith('!공지2')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지2'.length);
+      let contents = message.content.slice('!공지2'.length);
       let embed = new Discord.RichEmbed()
         .setAuthor('공지 of Cozy World')
         .setColor('#186de6')
@@ -164,10 +164,10 @@ client.on('message', (message) => {
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
-  } else if(message.content.startsWith('!전체공지')) {
+  } else if(message.content.startsWith('!공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지'.length);
+      let contents = message.content.slice('!공지'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`<@${message.author.id}> ${contents}`);

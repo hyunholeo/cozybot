@@ -100,7 +100,7 @@ client.on('message', (message) => {
       {name: '!관리자', desc: '관리자 소개'},
       {name: '!공지', desc: 'dm으로  공지 보내기'},
       {name: '!공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
-      {name: '!채팅청소', desc: '채팅청소 하기'},
+      {name: '!채팅삭제', desc: '채팅삭제 하기'},
       {name: '!초대코드', desc: '해당 채널의 초대 코드 표기'},
     ];
     let commandStr = '';

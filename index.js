@@ -49,7 +49,7 @@ client.on('message', (message) => {
     let img = 'https://cdn.discordapp.com/avatars/368442891615338496/1ec9a9cbafb3f1098dcf4af610ffe410.png?size=1024';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
-    embed.setAuthor('server info of Cozy World', img)
+    embed.setAuthor('Cozy World 디스코드 현황', img)
     embed.setFooter(`Cozy World ❤️`)
     embed.addBlankField()
     embed.addField('RAM',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);

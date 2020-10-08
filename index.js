@@ -3,8 +3,8 @@ const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : "";
 const moment = require("moment");
 require("moment-duration-format");
-const welcomeChannelName = "안녕하세요";
-const byeChannelName = "안녕히가세요";
+const welcomeChannelName = "📝｜디스코드입장";
+const byeChannelName = "📝ㅣ디스코드퇴장";
 const welcomeChannelComment = "어서오세요. 코지월드에 오신걸 환영합니다.";
 const byeChannelComment = "잘가시게~";
 

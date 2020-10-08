@@ -52,12 +52,12 @@ client.on('message', (message) => {
     embed.setAuthor('server info of Cozy World', img)
     embed.setFooter(`Cozy World ❤️`)
     embed.addBlankField()
-    embed.addField('RAM usage',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
-    embed.addField('running time', `${duration}`, true);
-    embed.addField('user',         `${client.users.size.toLocaleString()}`, true);
-    embed.addField('server',       `${client.guilds.size.toLocaleString()}`, true);
+    embed.addField('RAM',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
+    embed.addField('up time', `${duration}`, true);
+    embed.addField('유저',         `${client.users.size.toLocaleString()}`, true);
+    embed.addField('서버',       `${client.guilds.size.toLocaleString()}`, true);
     // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
-    embed.addField('Discord.js',   `v${Discord.version}`, true);
+    embed.addField('Discord',   `v${Discord.version}`, true);
     embed.addField('Node',         `${process.version}`, true);
     
     let arr = client.guilds.array();
@@ -75,19 +75,19 @@ client.on('message', (message) => {
     message.channel.send(embed);
   }
 
-  if(message.content == 'embed') {
+  if(message.content == '!관리자') {
     let img = 'https://cdn.discordapp.com/avatars/368442891615338496/1ec9a9cbafb3f1098dcf4af610ffe410.png?size=1024';
     let embed = new Discord.RichEmbed()
-      .setTitle('타이틀')
+      .setTitle('관리자 소개')
       .setURL('http://www.naver.com')
       .setAuthor('Cozy World', img, 'http://www.naver.com')
       .setThumbnail(img)
       .addBlankField()
-      .addField('Inline field title', 'Some value here')
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here1\nSome value here2\nSome value here3\n')
+      .addField('총 관리자', '!cozy#6968')
+      .addField('관리자', '늘봄#3333', true)
+      .addField('관리자', '경히#1824', true)
+      .addField('인게임 관리자', '𝑹𝒆𝒐#3193\n김창희#3678\n머랭쿠키#1004\n')
+      .addField('디스코드 관리자', '𝑻𝒆𝒓𝒆𝒔𝒂#6974\n뭘꼬나봐#1594\n')
       .addBlankField()
       .setTimestamp()
       .setFooter('made by 𝑻𝒆𝒓𝒆𝒔𝒂', img)

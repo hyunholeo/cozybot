@@ -5,12 +5,12 @@ const moment = require("moment");
 require("moment-duration-format");
 const welcomeChannelName = "안녕하세요";
 const byeChannelName = "안녕히가세요";
-const welcomeChannelComment = "어서오세요.";
-const byeChannelComment = "안녕히가세요.";
+const welcomeChannelComment = "어서오세요. 코지월드에 오신걸 환영합니다.";
+const byeChannelComment = "잘가시게~";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'online' })
+  client.user.setPresence({ game: { name: '봇 테스트 중 입니다.' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -20,7 +20,7 @@ client.on("guildMemberAdd", (member) => {
 
   welcomeChannel.send(`<@${newUser.id}> ${welcomeChannelComment}\n`);
 
-  member.addRole(guild.roles.find(role => role.name == "게스트"));
+  member.addRole(guild.roles.find(role => role.name == "불법체류자"));
 });
 
 client.on("guildMemberRemove", (member) => {
@@ -34,11 +34,17 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if(message.author.bot) return;
 
-  if(message.content == 'ping') {
-    return message.reply('pong');
+  if(message.content == '!출근') {
+    return message.reply('출근하셨습니다.');
   }
 
-  if(message.content == '!si') {
+  if(message.author.bot) return;
+
+  if(message.content == '!퇴근') {
+    return message.reply('퇴근하셨습니다. 수고하셨습니다.');
+  }
+
+  if(message.content == '~디스코드') {
     let embed = new Discord.RichEmbed()
     let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");

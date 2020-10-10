@@ -40,7 +40,7 @@ client.on('message', (message) => {
 
   if(message.content == '!디스코드') {
     let embed = new Discord.RichEmbed()
-    let img = 'https://discordapp.com/channels/763396607311609896/763396607793692725/764437000535015427';
+    let img = 'https://cdn.discordapp.com/attachments/763396607793692725/764437000354267146/common.png';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
     embed.setAuthor('디스코드 현황', img)
@@ -70,7 +70,7 @@ client.on('message', (message) => {
   }
 
   if(message.content == '!관리자') {
-    let img = 'https://discordapp.com/channels/763396607311609896/763396607793692725/764437000535015427';
+    let img = 'https://cdn.discordapp.com/attachments/763396607793692725/764437000354267146/common.png';
     let embed = new Discord.RichEmbed()
       .setTitle('관리자 소개')
       .setURL('http://www.naver.com')
@@ -87,7 +87,7 @@ client.on('message', (message) => {
 
     message.channel.send(embed)
   } else if(message.content == '!도움말') {
-    let helpImg = 'https://discordapp.com/channels/763396607311609896/763396607793692725/764437000535015427';
+    let helpImg = 'https://cdn.discordapp.com/attachments/763396607793692725/764437000354267146/common.png';
     let commandList = [
       {name: '!도움말', desc: '도움말'},
       {name: '!디스코드', desc: '현재 디스코드 상태'},

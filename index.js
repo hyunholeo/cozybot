@@ -35,12 +35,12 @@ client.on('message', (message) => {
   if(message.author.bot) return;
 
   if(message.content == '!시댕봇') {
-    return message.reply('네 주인님.');
+    return message.reply('네 주인님');
   }
 
   if(message.content == '!디스코드') {
     let embed = new Discord.RichEmbed()
-    let img = 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120925_21%2Faktlsdmlgla_1348576236754GcMk3_JPEG%2F2012-09-25_21%253B29%253B46.jpg&type=sc960_832';
+    let img = 'https://discordapp.com/channels/763396607311609896/763396607793692725/764437000535015427';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
     embed.setAuthor('디스코드 현황', img)
@@ -70,7 +70,7 @@ client.on('message', (message) => {
   }
 
   if(message.content == '!관리자') {
-    let img = 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120925_21%2Faktlsdmlgla_1348576236754GcMk3_JPEG%2F2012-09-25_21%253B29%253B46.jpg&type=sc960_832';
+    let img = 'https://discordapp.com/channels/763396607311609896/763396607793692725/764437000535015427';
     let embed = new Discord.RichEmbed()
       .setTitle('관리자 소개')
       .setURL('http://www.naver.com')
@@ -87,7 +87,7 @@ client.on('message', (message) => {
 
     message.channel.send(embed)
   } else if(message.content == '!도움말') {
-    let helpImg = 'https://cdn.discordapp.com/avatars/368442891615338496/1ec9a9cbafb3f1098dcf4af610ffe410.png?size=1024';
+    let helpImg = 'https://discordapp.com/channels/763396607311609896/763396607793692725/764437000535015427';
     let commandList = [
       {name: '!도움말', desc: '도움말'},
       {name: '!디스코드', desc: '현재 디스코드 상태'},

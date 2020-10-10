@@ -10,7 +10,7 @@ const byeChannelComment = "잘가시게~";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: 'Cozy World' }, status: 'online' })
+  client.user.setPresence({ game: { name: '서비스 종료' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -98,8 +98,8 @@ client.on('message', (message) => {
       {name: '!도움말', desc: '도움말'},
       {name: '!디스코드', desc: '현재 디스코드 상태'},
       {name: '!관리자', desc: '관리자 소개'},
-      {name: '!공지', desc: 'dm으로  공지 보내기'},
-      {name: '!공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
+      {name: '!전체공지', desc: 'dm으로  공지 보내기'},
+      {name: '!전체공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
       {name: '!채팅삭제', desc: '채팅삭제 하기'},
       {name: '!초대코드', desc: '해당 채널의 초대 코드 표기'},
     ];
@@ -142,10 +142,10 @@ client.on('message', (message) => {
           message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
         }
       })
-  } else if(message.content.startsWith('!공지2')) {
+  } else if(message.content.startsWith('!전체공지2')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!공지2'.length);
+      let contents = message.content.slice('!전체공지2'.length);
       let embed = new Discord.RichEmbed()
         .setAuthor('Cozy World 공지')
         .setColor('#186de6')
@@ -163,10 +163,10 @@ client.on('message', (message) => {
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
-  } else if(message.content.startsWith('!공지')) {
+  } else if(message.content.startsWith('!전체공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!공지'.length);
+      let contents = message.content.slice('!전체공지'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`<@${message.author.id}> ${contents}`);

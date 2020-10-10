@@ -10,7 +10,7 @@ const byeChannelComment = "님이 출국하셨습니다.";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '서비스 종료' }, status: 'online' })
+  client.user.setPresence({ game: { name: '!도움말' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -20,7 +20,7 @@ client.on("guildMemberAdd", (member) => {
 
   welcomeChannel.send(`<@${newUser.id}> ${welcomeChannelComment}\n`);
 
-  member.addRole(guild.roles.find(role => role.name == "불법체류자"));
+  member.addRole(guild.roles.find(role => role.name == "소중한 사람들"));
 });
 
 client.on("guildMemberRemove", (member) => {
@@ -34,19 +34,13 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if(message.author.bot) return;
 
-  if(message.content == '!출근') {
-    return message.reply('출근하셨습니다.');
-  }
-
-  if(message.author.bot) return;
-
-  if(message.content == '!퇴근') {
-    return message.reply('퇴근하셨습니다. 수고하셨습니다.');
+  if(message.content == '!시댕봇') {
+    return message.reply('네 주인님.');
   }
 
   if(message.content == '!디스코드') {
     let embed = new Discord.RichEmbed()
-    let img = 'https://cdn.discordapp.com/avatars/368442891615338496/1ec9a9cbafb3f1098dcf4af610ffe410.png?size=1024';
+    let img = 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120925_21%2Faktlsdmlgla_1348576236754GcMk3_JPEG%2F2012-09-25_21%253B29%253B46.jpg&type=sc960_832';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
     embed.setAuthor('디스코드 현황', img)
@@ -76,7 +70,7 @@ client.on('message', (message) => {
   }
 
   if(message.content == '!관리자') {
-    let img = 'https://cdn.discordapp.com/avatars/368442891615338496/1ec9a9cbafb3f1098dcf4af610ffe410.png?size=1024';
+    let img = 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120925_21%2Faktlsdmlgla_1348576236754GcMk3_JPEG%2F2012-09-25_21%253B29%253B46.jpg&type=sc960_832';
     let embed = new Discord.RichEmbed()
       .setTitle('관리자 소개')
       .setURL('http://www.naver.com')
@@ -97,17 +91,16 @@ client.on('message', (message) => {
     let commandList = [
       {name: '!도움말', desc: '도움말'},
       {name: '!디스코드', desc: '현재 디스코드 상태'},
-      {name: '!관리자', desc: '관리자 소개'},
-      {name: '!전체공지', desc: 'dm으로  공지 보내기'},
-      {name: '!전체공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
+      {name: '!공지', desc: 'dm으로  공지 보내기'},
+      {name: '!공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
       {name: '!채팅삭제', desc: '채팅삭제 하기'},
       {name: '!초대코드', desc: '해당 채널의 초대 코드 표기'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
-      .setAuthor('Cozy World 도움말', helpImg)
+      .setAuthor('시댕봇 도움말', helpImg)
       .setColor('#186de6')
-      .setFooter(`Cozy World ❤️`)
+      .setFooter(`made by 𝑻𝒆𝒓𝒆𝒔𝒂 ❤️`)
       .setTimestamp()
     
     commandList.forEach(x => {
@@ -142,14 +135,14 @@ client.on('message', (message) => {
           message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
         }
       })
-  } else if(message.content.startsWith('!전체공지2')) {
+  } else if(message.content.startsWith('!공지2')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지2'.length);
+      let contents = message.content.slice('!공지2'.length);
       let embed = new Discord.RichEmbed()
-        .setAuthor('Cozy World 공지')
+        .setAuthor('시댕봇 공지')
         .setColor('#186de6')
-        .setFooter(`Cozy World ❤️`)
+        .setFooter(`made by 𝑻𝒆𝒓𝒆𝒔𝒂 ❤️`)
         .setTimestamp()
   
       embed.addField('내용: ', contents);
@@ -163,10 +156,10 @@ client.on('message', (message) => {
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
-  } else if(message.content.startsWith('!전체공지')) {
+  } else if(message.content.startsWith('!공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지'.length);
+      let contents = message.content.slice('!공지'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`<@${message.author.id}> ${contents}`);

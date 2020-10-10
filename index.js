@@ -3,10 +3,10 @@ const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : "";
 const moment = require("moment");
 require("moment-duration-format");
-const welcomeChannelName = "📝｜디스코드입장";
-const byeChannelName = "📝ㅣ디스코드퇴장";
-const welcomeChannelComment = "어서오세요. 코지월드에 오신걸 환영합니다.";
-const byeChannelComment = "잘가시게~";
+const welcomeChannelName = "➕ㅣ입국";
+const byeChannelName = "➖ㅣ출국";
+const welcomeChannelComment = "님이 입장하셨습니다.";
+const byeChannelComment = "님이 출국하셨습니다.";
 
 client.on('ready', () => {
   console.log('켰다.');
@@ -49,8 +49,8 @@ client.on('message', (message) => {
     let img = 'https://cdn.discordapp.com/avatars/368442891615338496/1ec9a9cbafb3f1098dcf4af610ffe410.png?size=1024';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
-    embed.setAuthor('Cozy World 디스코드 현황', img)
-    embed.setFooter(`Cozy World ❤️`)
+    embed.setAuthor('디스코드 현황', img)
+    embed.setFooter(`made by 𝑻𝒆𝒓𝒆𝒔𝒂 ❤️`)
     embed.addBlankField()
     embed.addField('RAM',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
     embed.addField('Up time', `${duration}`, true);

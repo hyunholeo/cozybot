@@ -93,7 +93,7 @@ client.on('message', (message) => {
       {name: '!디스코드', desc: '현재 디스코드 상태'},
       {name: '!공지', desc: 'dm으로  공지 보내기'},
       {name: '!공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
-      {name: '!삭제', desc: '채팅삭제 하기'},
+      {name: '!채팅청소', desc: '채팅청소 하기'},
       {name: '!초대코드', desc: '해당 채널의 초대 코드 표기'},
     ];
     let commandStr = '';
@@ -169,14 +169,14 @@ client.on('message', (message) => {
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
-  } else if(message.content.startsWith('!삭제')) {
+  } else if(message.content.startsWith('!채팅청소')) {
     if(message.channel.type == 'dm') {
       return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
     }
     
     if(message.channel.type != 'dm' && checkPermission(message)) return
 
-    var clearLine = message.content.slice('!삭제 '.length);
+    var clearLine = message.content.slice('!채팅청소 '.length);
     var isNum = !isNaN(clearLine)
 
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {

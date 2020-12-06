@@ -10,7 +10,7 @@ const byeChannelComment = "님이 출국하셨습니다.";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '!도움말' }, status: 'online' })
+  client.user.setPresence({ game: { name: '-도움말' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -34,11 +34,11 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if(message.author.bot) return;
 
-  if(message.content == '!시댕봇') {
-    return message.reply('네 주인님');
+  if(message.content == '-시댕봇') {
+    return message.reply('무요');
   }
 
-  if(message.content == '!디스코드') {
+  if(message.content == '-디스코드') {
     let embed = new Discord.RichEmbed()
     let img = 'https://cdn.discordapp.com/attachments/763396607793692725/764437000354267146/common.png';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
@@ -69,7 +69,7 @@ client.on('message', (message) => {
     message.channel.send(embed);
   }
 
-  if(message.content == '!관리자') {
+  if(message.content == '-관리자') {
     let img = 'https://cdn.discordapp.com/attachments/763396607793692725/764437000354267146/common.png';
     let embed = new Discord.RichEmbed()
       .setTitle('관리자 소개')
@@ -86,15 +86,15 @@ client.on('message', (message) => {
       .setFooter('made by 𝑻𝒆𝒓𝒆𝒔𝒂', img)
 
     message.channel.send(embed)
-  } else if(message.content == '!도움말') {
+  } else if(message.content == '-도움말') {
     let helpImg = 'https://cdn.discordapp.com/attachments/763396607793692725/764437000354267146/common.png';
     let commandList = [
-      {name: '!도움말', desc: '도움말'},
-      {name: '!디스코드', desc: '현재 디스코드 상태'},
-      {name: '!공지', desc: 'dm으로  공지 보내기'},
-      {name: '!공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
-      {name: '!채팅청소', desc: '채팅청소 하기'},
-      {name: '!초대코드', desc: '해당 채널의 초대 코드 표기'},
+      {name: '-도움말', desc: '도움말'},
+      {name: '-디스코드', desc: '현재 디스코드 상태'},
+      {name: '-공지', desc: 'dm으로  공지 보내기'},
+      {name: '-공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
+      {name: '-청소', desc: '채탕 청소하기'},
+      {name: '-초대코드', desc: '해당 채널의 초대 코드 표기'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
@@ -110,7 +110,7 @@ client.on('message', (message) => {
     embed.addField('Commands: ', commandStr);
 
     message.channel.send(embed)
-  } else if(message.content == '!초대코드2') {
+  } else if(message.content == '-초대코드2') {
     client.guilds.array().forEach(x => {
       x.channels.find(x => x.type == 'text').createInvite({maxAge: 0}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
         .then(invite => {
@@ -122,7 +122,7 @@ client.on('message', (message) => {
           }
         })
     });
-  } else if(message.content == '!초대코드') {
+  } else if(message.content == '-초대코드') {
     if(message.channel.type == 'dm') {
       return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
     }
@@ -135,10 +135,10 @@ client.on('message', (message) => {
           message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
         }
       })
-  } else if(message.content.startsWith('!공지2')) {
+  } else if(message.content.startsWith('-공지2')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!공지2'.length);
+      let contents = message.content.slice('-공지2'.length);
       let embed = new Discord.RichEmbed()
         .setAuthor('시댕봇 공지')
         .setColor('#186de6')
@@ -169,14 +169,14 @@ client.on('message', (message) => {
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
-  } else if(message.content.startsWith('!채팅청소')) {
+  } else if(message.content.startsWith('-청소')) {
     if(message.channel.type == 'dm') {
       return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
     }
     
     if(message.channel.type != 'dm' && checkPermission(message)) return
 
-    var clearLine = message.content.slice('!채팅청소 '.length);
+    var clearLine = message.content.slice('-청소 '.length);
     var isNum = !isNaN(clearLine)
 
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {

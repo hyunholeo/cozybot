@@ -20,7 +20,7 @@ client.on("guildMemberAdd", (member) => {
 
   welcomeChannel.send(`<@${newUser.id}> ${welcomeChannelComment}\n`);
 
-  member.addRole(guild.roles.find(role => role.name == "소중한 사람들"));
+  member.addRole(guild.roles.find(role => role.name == "유저"));
 });
 
 client.on("guildMemberRemove", (member) => {

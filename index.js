@@ -237,5 +237,24 @@ async function AutoMsgDelete(message, str, delay = 3000) {
     msg.delete();
   }, delay);
 }
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const token = 'token';
+
+client.on('ready', () => {
+    console.log('online');
+    client.user.setActivity("욕설감지테스트", {
+      type: "STREAMING",
+      url: "https://www.twitch.tv/monstercat"
+    });
+  });
+
+client.on("message", async message =>
+{
+if (message.content.startsWith("욕설")) {
+message.delete();
+message.channel.send("욕설이감지되었습니다")
+}
+});
 
 client.login(token);

@@ -237,9 +237,6 @@ async function AutoMsgDelete(message, str, delay = 3000) {
     msg.delete();
   }, delay);
 }
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const token = 'token';
 
 client.on('ready', () => {
     console.log('online');

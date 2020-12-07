@@ -248,7 +248,7 @@ client.on('ready', () => {
 
 client.on("message", async message =>
 {
-if (message.content.startsWith("욕설")) {
+if (message.content.startsWith("시발", "개새끼", "병신")) {
 message.delete();
 message.channel.send("욕설이감지되었습니다")
 }

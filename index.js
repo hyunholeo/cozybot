@@ -238,14 +238,6 @@ async function AutoMsgDelete(message, str, delay = 3000) {
   }, delay);
 }
 
-client.on('ready', () => {
-    console.log('online');
-    client.user.setActivity("욕설감지테스트", {
-      type: "STREAMING",
-      url: "https://www.twitch.tv/monstercat"
-    });
-  });
-
 client.on("message", async message =>
 {
 if (message.content.startsWith("시발", "개새끼", "병신", "무요")) {

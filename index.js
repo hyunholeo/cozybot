@@ -233,7 +233,7 @@ message.channel.send("욕하지마 개새끼야")
 }
 });
 
-const request = require("request")
+const request = require("-코로나")
 
 
 let url = "https://apiv2.corona-live.com/stats.json"

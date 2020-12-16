@@ -227,7 +227,7 @@ async function AutoMsgDelete(message, str, delay = 3000) {
 
 client.on("message", async message =>
 {
-if (message.content.startsWith("시발", "개새끼", "병신", "무요")) {
+if (message.content.startsWith("시발","개새끼","병신","무요")) {
 message.delete();
 message.channel.send("욕하지마 개새끼야")
 }

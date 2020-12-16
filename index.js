@@ -40,7 +40,7 @@ client.on('message', (message) => {
 
   if(message.content == '-디스코드') {
     let embed = new Discord.RichEmbed()
-    let img = 'https://cdn.discordapp.com/attachments/763396607793692725/764437000354267146/common.png';
+    let img = 'https://cdn.discordapp.com/attachments/763396607793692725/788750039220617216/1c51174113104005.jpg';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
     embed.setAuthor('디스코드 현황', img)

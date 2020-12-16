@@ -34,7 +34,7 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if(message.author.bot) return;
 
-  if(message.content == '-시댕봇') {
+  if(message.content == '-북극곰') {
     return message.reply('무요');
   }
 
@@ -87,18 +87,17 @@ client.on('message', (message) => {
 
     message.channel.send(embed)
   } else if(message.content == '-도움말') {
-    let helpImg = 'https://cdn.discordapp.com/attachments/763396607793692725/764437000354267146/common.png';
+    let helpImg = 'https://cdn.discordapp.com/attachments/763396607793692725/788750039220617216/1c51174113104005.jpg';
     let commandList = [
       {name: '-도움말', desc: '도움말'},
       {name: '-디스코드', desc: '현재 디스코드 상태'},
-      {name: '-공지', desc: 'dm으로  공지 보내기'},
-      {name: '-공지2', desc: 'dm으로 embed 형식으로 공지 보내기'},
+      {name: '-공지', desc: 'dm으로 embed 형식으로 공지 보내기'},
       {name: '-청소', desc: '채탕 청소하기'},
       {name: '-초대코드', desc: '해당 채널의 초대 코드 표기'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
-      .setAuthor('시댕봇 도움말', helpImg)
+      .setAuthor('북극곰 도움말', helpImg)
       .setColor('#186de6')
       .setFooter(`made by 𝑻𝒆𝒓𝒆𝒔𝒂 ❤️`)
       .setTimestamp()
@@ -135,12 +134,12 @@ client.on('message', (message) => {
           message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
         }
       })
-  } else if(message.content.startsWith('-공지2')) {
+  } else if(message.content.startsWith('-공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('-공지2'.length);
+      let contents = message.content.slice('-공지'.length);
       let embed = new Discord.RichEmbed()
-        .setAuthor('시댕봇 공지')
+        .setAuthor('북극곰 공지')
         .setColor('#186de6')
         .setFooter(`made by 𝑻𝒆𝒓𝒆𝒔𝒂 ❤️`)
         .setTimestamp()
@@ -152,19 +151,7 @@ client.on('message', (message) => {
         x.user.send(embed)
       });
   
-      return message.reply('공지를 전송했습니다.');
-    } else {
-      return message.reply('채널에서 실행해주세요.');
-    }
-  } else if(message.content.startsWith('!공지')) {
-    if(checkPermission(message)) return
-    if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!공지'.length);
-      message.member.guild.members.array().forEach(x => {
-        if(x.user.bot) return;
-        x.user.send(`<@${message.author.id}> ${contents}`);
-      });
-  
+
       return message.reply('공지를 전송했습니다.');
     } else {
       return message.reply('채널에서 실행해주세요.');

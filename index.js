@@ -233,23 +233,19 @@ message.channel.send("욕하지마 개새끼야")
 }
 });
 
-client.on('message', async message => {
-  if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;
-    let blacklisted = ["여기에"] // 이 말을 읽고
-    let foundInText = false;
-    for (var i in blacklisted) { 
-      if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true
-    }
+client.on('messageDelete', async message => {
+  let img = message.author.avatar ? `https://cdn.discordapp.com/avatars/${message.author.id}/${message.author.avatar}.webp?size=256` : undefined;
+  let embed = new Discord.MessageEmbed()
+  .setTitle('Chatting Log')
+  .setColor('#FFFF')
+  .addField('Log-Type', 'Deleted Message')
+  .addField('Message By:', message.author.tag)
+  .addField('Channel:', message.channel.name)
+  .addField(message.content)
+  .setFooter(message.author.tag, img)
 
-    if (foundInText) {
-        const user = message.author.id;
-        const embed = new Discord.MessageEmbed()
-        .setColor('#FF0000')
-        .setDescription(`<@${user}> 봇 이 해줄말 `); // 이렇게 적으면 embed 로 답을 하는 커맨드
-        message.channel.send(embed)
-}
-}
-); 
+  message.channel.send(embed)
+
+}) // 메세지 삭제로그 (embed)
 
 client.login(token);

@@ -92,7 +92,7 @@ client.on('message', (message) => {
       {name: '-도움말', desc: '도움말'},
       {name: '-디스코드', desc: '현재 디스코드 상태'},
       {name: '-공지', desc: 'dm으로 embed 형식으로 공지 보내기'},
-      {name: '-청소', desc: '채탕 청소하기'},
+      {name: '-청소', desc: '채팅 청소하기'},
       {name: '-초대코드', desc: '해당 채널의 초대 코드 표기'},
     ];
     let commandStr = '';
@@ -232,5 +232,24 @@ message.delete();
 message.channel.send("욕하지마 개새끼야")
 }
 });
+
+client.on('message', async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === 'dm') return;
+    let blacklisted = ["여기에"] // 이 말을 읽고
+    let foundInText = false;
+    for (var i in blacklisted) { 
+      if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true
+    }
+
+    if (foundInText) {
+        const user = message.author.id;
+        const embed = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+        .setDescription(`<@${user}> 봇 이 해줄말 `); // 이렇게 적으면 embed 로 답을 하는 커맨드
+        message.channel.send(embed)
+}
+}
+); 
 
 client.login(token);

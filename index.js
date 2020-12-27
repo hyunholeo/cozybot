@@ -246,7 +246,7 @@ client.on('guildMemberAdd', member => {   //guildMemberRemove
   const channel_111 = member.guild.systemChannel
   if (!channel_111) return;
   const pong_ping = new Discord.MessageEmbed()
-  .setColor('0x0ffff0').setTitle("➕ㅣ입국").setDescription(`새로운 멤버 :\n${member}님, **${member.guild.name}**에 오신것을 환영합니다!`)
+  .setColor('0x0ffff0').setTitle("멤버 입장").setDescription(`➕ㅣ입국 :\n${member}님, **${member.guild.name}**에 오신것을 환영합니다!`)
   channel_111.send(pong_ping)
 });
 
@@ -254,7 +254,7 @@ client.on('guildMemberRemove', member => {   //guildMemberRemove
   const channel_1111 = member.guild.systemChannel
   if (!channel_1111) return;
   const pong_ping1 = new Discord.MessageEmbed()
-  .setColor('0x0fffff').setTitle("➖ㅣ출국a").setDescription(`퇴장한 멤버 :\n${member}님, **${member.guild.name}**에서 퇴장하셨습니다`)
+  .setColor('0x0fffff').setTitle("멤버 퇴장").setDescription(`➖ㅣ출국 :\n${member}님, **${member.guild.name}**에서 퇴장하셨습니다`)
   channel_1111.send(pong_ping1)
 });
 

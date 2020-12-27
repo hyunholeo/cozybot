@@ -90,6 +90,7 @@ client.on('message', (message) => {
     let helpImg = 'https://cdn.discordapp.com/attachments/763396607793692725/788750039220617216/1c51174113104005.jpg';
     let commandList = [
       {name: '-도움말', desc: '도움말'},
+      {name: '-핑', desc: '현재 핑 확인'},
       {name: '-디스코드', desc: '현재 디스코드 상태'},
       {name: '-공지', desc: 'dm으로 embed 형식으로 공지 보내기'},
       {name: '-청소', desc: '채팅 청소하기'},

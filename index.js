@@ -237,7 +237,7 @@ client.on('message', async message => {
   if (message.author.bot) return;  
 
   if(message.content === "-핑"){ 
-    message.channel.send(`🏓\`${Date.now() - message.createdTimestamp}\`ms 입니다!`);
+    message.channel.send(`🏓\`${Date.now() - message.createdTimestamp}\`ms 퐁!`);
   }
 })
 

@@ -242,19 +242,4 @@ client.on('message', async message => {
   }
 })
 
-if(message.content == `-주사위`) {
-  const number = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-];
-
-const Response = Math.floor(Math.random() * number.length);
-
-message.channel.send(`${number[Response]}`)
-}
-
 client.login(token);

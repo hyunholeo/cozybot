@@ -241,7 +241,6 @@ client.on('message', async message => {
     message.channel.send(`🏓\`${Date.now() - message.createdTimestamp}\`ms 퐁!`);
   }
 })
-
 if (message.content === '-코로나') {
   let url = "https://apiv2.corona-live.com/stats.json"
   request(url, (error, response, body) => {
